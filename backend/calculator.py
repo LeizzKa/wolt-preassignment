@@ -1,61 +1,74 @@
-from units import unit
-from valuta.shortcuts import display_in_currency_units
 import datetime
-import valuta
 
-def calculator(delivery_distance, item_amount, cart_value):
-    metres = unit('m')
-    surcharge = 0
-    total: float = 0
-    delivery_fee: valuta
-    max_fee: float = display_in_currency_units("EUR", 1_500)
-    delivery_distance: float = metres
+def calculator(delivery_distance, item_amount, cart_value, year, month, day, hour, minute):
+    surcharge: float = 0.0
+    total_fees: float = 0.0
+    delivery_fee: float = 0.0
+    max_fee: float
+    delivery_distance: float
     item_amount: float
-    cart_value: float = display_in_currency_units("EUR", 0)
+    cart_value: float
     friday_rush: datetime
-    
-    
-    if cart_value > display_in_currency_units("EUR", 1_000):
-        surcharge = display_in_currency_units("EUR", 1_000) - cart_value
-    else:
-        pass
+
+    date = datetime.date(year, month, day)
+    time = datetime.time(hour, minute)
+    is_friday = date.weekday() == 4
+    is_after15 = time >= datetime.time(15, 00)
+    is_before19 = time >= datetime.time(19, 00)
         
     if item_amount >= 5:
-        extra_items = item_amount - 4
-        for item in extra_items:
-            surcharge = surcharge + display_in_currency_units("EUR", 50)
+        while item_amount > 4:
+            surcharge += 0.5
+            item_amount -=1
+        if item_amount > 12:
+            surcharge += 1.2
+            
+        else:
+            pass
+    else:    
+        pass
+
+    if 500 < delivery_distance <= 1000:
+        delivery_fee = 2
+    elif delivery_distance < 500:
+        delivery_fee = 1
+    else:
+        delivery_fee = 2
+        extra_distance = delivery_distance - 1000
+        while (extra_distance / 500) >= 0:
+           delivery_fee += 1
+           extra_distance -= 500
+
+    if cart_value < 10:
+        surcharge = 10 - cart_value
+    elif cart_value >= 100:
+        surcharge = 0
+        delivery_fee = 0
     else:
         pass
 
-    if metres(delivery_distance) <= metres(1000):
-        delivery_fee = display_in_currency_units("EUR", 200)
-    else:
-        extra_distance = metres(delivery_distance) - metres(1000)
-        times_over_base = 0
-        while metres(extra_distance) > metres(500):
-            times_over_base+1
-        for i in times_over_base:
-            delivery_fee = delivery_fee + display_in_currency_units("EUR", 100)
 
-
-    total_fees = cart_value + surcharge + delivery_fee
-    if total_fees > display_in_currency_units("EUR", 1_500):
-        total_fees = display_in_currency_units("EUR", 1_500)
+    total_fees = surcharge + delivery_fee
+    if total_fees > 15:
+        total_fees = 15
     else:
         pass
 
-    
-    date = datetime.date()
-    is_friday = date.weekday() == 4
-    friday_rush = None
+    if is_friday and is_after15 or is_before19:
+        print(total_fees)
+        total_fees = total_fees*1.2
+        print(total_fees)
+    else:
+        pass
 
-    print("Your surcharge is " + surcharge)
-    print("Your delivery fees are " + delivery_fee)
-    print("Your total is: " + total_fees)
+    print("Your surcharge is:", surcharge, "€")
+    print("Your delivery fees are:", delivery_fee, "€")
+    print("Your total is:", total_fees, "€")
+
+    return total_fees
 
 
 if __name__ == "__main__":
-    calculator(1000, 4, 10)
-    #if is_friday and 15 <= date.hour() < 19 is True:
+    calculator(3000, 4, 80, 2023, 2, 3, 16, 40)
 
         
