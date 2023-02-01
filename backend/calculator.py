@@ -1,13 +1,14 @@
 import datetime
+import decimal
 
 def calculator(delivery_distance, item_amount, cart_value, year, month, day, hour, minute):
-    surcharge: float = 0.0
-    total_fees: float = 0.0
-    delivery_fee: float = 0.0
-    max_fee: float
-    delivery_distance: float
-    item_amount: float
-    cart_value: float
+    surcharge: decimal = 0.0
+    total_fees: decimal = 0.0
+    delivery_fee: decimal = 0.0
+    max_fee: decimal
+    delivery_distance: decimal
+    item_amount: decimal
+    cart_value: decimal
     friday_rush: datetime
 
     date = datetime.date(year, month, day)
@@ -17,12 +18,12 @@ def calculator(delivery_distance, item_amount, cart_value, year, month, day, hou
     is_before19 = time >= datetime.time(19, 00)
         
     if item_amount >= 5:
+        if item_amount > 12:
+            print("Bulk fee added")
+            surcharge += 1.2
         while item_amount > 4:
             surcharge += 0.5
-            item_amount -=1
-        if item_amount > 12:
-            surcharge += 1.2
-            
+            item_amount -=1  
         else:
             pass
     else:    
@@ -35,7 +36,7 @@ def calculator(delivery_distance, item_amount, cart_value, year, month, day, hou
     else:
         delivery_fee = 2
         extra_distance = delivery_distance - 1000
-        while (extra_distance / 500) >= 0:
+        while (extra_distance / 500) > 0:
            delivery_fee += 1
            extra_distance -= 500
 
@@ -49,18 +50,18 @@ def calculator(delivery_distance, item_amount, cart_value, year, month, day, hou
 
 
     total_fees = surcharge + delivery_fee
+
+    if is_friday and is_after15 or is_before19:
+        print("Friday rush bonus added")
+        total_fees = total_fees*1.2
+    else:
+        pass
+
     if total_fees > 15:
         total_fees = 15
     else:
         pass
-
-    if is_friday and is_after15 or is_before19:
-        print(total_fees)
-        total_fees = total_fees*1.2
-        print(total_fees)
-    else:
-        pass
-
+    total_fees = round(total_fees, 2)
     print("Your surcharge is:", surcharge, "€")
     print("Your delivery fees are:", delivery_fee, "€")
     print("Your total is:", total_fees, "€")
