@@ -1,34 +1,110 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import DateTimePicker from "react-datetime-picker";
+import axios from "axios";
+import Header from "./components/topBar";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+interface Props {
+  items: number;
+  distance: number;
+  value: number;
+  fees: number;
+}
+
+function App(props: Props) {
+  const [fees, setFees] = useState();
+  const [distance, setDistance] = useState();
+  const [value, setValue] = useState();
+  const [items, setItems] = useState();
+  const [time, onChange] = useState(new Date());
+
+  const handleDistanceChange = (event) => {
+    setDistance(event.currentTarget.value);
+  };
+  const handleItemsChange = (event) => {
+    setItems(event.currentTarget.value);
+  };
+  const handleValueChange = (event) => {
+    setValue(event.currentTarget.value);
+  };
+
+  const fetch = async () => {
+    const response = await axios.get(`${targetURL}`);
+    setFees(response.data.total_fees);
+  };
+
+  let targetURL =
+    "http://localhost:5000/item_amount=" +
+    items +
+    "&delivery_distance=" +
+    distance +
+    "&cart_value=" +
+    value;
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Header />
+      <div className="Cart">
+        <label>
+          Cart value:
+          <input
+            id="cart_input"
+            type="text"
+            name="cart_value"
+            value={value || ""}
+            onChange={handleValueChange}
+          />
+        </label>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <div className="Distance">
+        <label>
+          Distance:
+          <input
+            id="distance_input"
+            type="text"
+            name="delivery_distance"
+            value={distance || ""}
+            onChange={handleDistanceChange}
+          />
+        </label>
+      </div>
+      <div className="Items">
+        <label>
+          Item amount:
+          <input
+            type="text"
+            name="item_amount"
+            value={items || ""}
+            onChange={handleItemsChange}
+          />
+        </label>
+      </div>
+      <div className="Date">
+        <DateTimePicker
+          onChange={onChange}
+          value={time}
+          format="y-MM-dd h:mm:ss"
+        />
+      </div>
+      <div className="submit-button">
+        <button
+          id="submit"
+          onClick={(e) => {
+            handleValueChange;
+            handleDistanceChange;
+            handleItemsChange;
+            fetch();
+          }}
+        >
+          Calculate delivery price
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div className="delivery">
+        <p>Delivery price: </p>
+        <p>{(Math.round(fees) / 100).toFixed(2) || null}</p>
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

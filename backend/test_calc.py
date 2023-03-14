@@ -4,107 +4,113 @@ def test_shortDistance():
     We test the function with a distance of 499m
     with increasing item amounts
     """
-    assert calculator(499, 4, 10, 2022, 1, 31, 14, 00) == 1.00
-    assert calculator(499, 5, 10, 2022, 1, 31, 14, 00) == 1.50
-    assert calculator(499, 10, 10, 2022, 1, 31, 14, 00) == 4.00 
-    assert calculator(499, 13, 10, 2022, 1, 31, 14, 00) == 6.70
+    assert calculator(499, 4, 10, 2022, 1, 31, 14, 00) == 100
+    assert calculator(499, 5, 10, 2022, 1, 31, 14, 00) == 150
+    assert calculator(499, 10, 10, 2022, 1, 31, 14, 00) == 400 
+    assert calculator(499, 13, 10, 2022, 1, 31, 14, 00) == 670
     
     #We implement the Friday rush multiplier
-    assert calculator(499, 4, 10, 2023, 2, 3, 16, 30) == 1.20
-    assert calculator(499, 5, 10, 2023, 2, 3, 16, 30) == 1.80
-    assert calculator(499, 10, 10, 2023, 2, 3, 16, 30) == 4.80
-    assert calculator(499, 13, 10, 2023, 2, 3, 16, 30) == 8.04
+    assert calculator(499, 4, 10, 2023, 2, 3, 16, 30) == 120
+    assert calculator(499, 5, 10, 2023, 2, 3, 16, 30) == 180
+    assert calculator(499, 10, 10, 2023, 2, 3, 16, 30) == 480
+    assert calculator(499, 13, 10, 2023, 2, 3, 16, 30) == 804
  
 def test_distance1000():
     """
     Test the function with a distance of 1km
     with increasing item amounts
     """
-    assert calculator(1000, 4, 10, 2023, 2, 3, 14, 00) == 2.00
-    assert calculator(1000, 5, 10, 2023, 2, 3, 14, 00) == 2.50
-    assert calculator(1000, 10, 10, 2023, 2, 3, 14, 00) == 5.00
-    assert calculator(1000, 13, 10, 2023, 2, 3, 14, 00) == 7.70
+    assert calculator(1000, 4, 10, 2023, 2, 3, 14, 00) == 200
+    assert calculator(1000, 5, 10, 2023, 2, 3, 14, 00) == 250
+    assert calculator(1000, 10, 10, 2023, 2, 3, 14, 00) == 500
+    assert calculator(1000, 13, 10, 2023, 2, 3, 14, 00) == 770
 
     #With Friday rush multiplier
 
-    assert calculator(1000, 4, 10, 2023, 2, 3, 16, 30) == 2.40
-    assert calculator(1000, 5, 10, 2023, 2, 3, 16, 30) == 3.00
-    assert calculator(1000, 10, 10, 2023, 2, 3, 16, 30) == 6.00
-    assert calculator(1000, 13, 10, 2023, 2, 3, 16, 30) == 9.24
+    assert calculator(1000, 4, 10, 2023, 2, 3, 16, 30) == 240
+    assert calculator(1000, 5, 10, 2023, 2, 3, 16, 30) == 300
+    assert calculator(1000, 10, 10, 2023, 2, 3, 16, 30) == 600
+    assert calculator(1000, 13, 10, 2023, 2, 3, 16, 30) == 924
 
 def test_distance1500():
     """
     Test the function with a distance of 1.5km
     with increasing item amounts
     """
-    assert calculator(1500, 4, 10, 2023, 2, 3, 14, 00) == 3.00
-    assert calculator(1500, 5, 10, 2023, 2, 3, 14, 00) == 3.50
-    assert calculator(1500, 10, 10, 2023, 2, 3, 14, 00) == 6.00
-    assert calculator(1500, 13, 10, 2023, 2, 3, 14, 00) == 8.70
+    assert calculator(1500, 4, 10, 2023, 2, 3, 14, 00) == 300
+    assert calculator(1500, 5, 10, 2023, 2, 3, 14, 00) == 350
+    assert calculator(1500, 10, 10, 2023, 2, 3, 14, 00) == 600
+    assert calculator(1500, 13, 10, 2023, 2, 3, 14, 00) == 870
 
     #With Friday rush multiplier
 
-    assert calculator(1500, 4, 10, 2023, 2, 3, 16, 30) == 3.60
-    assert calculator(1500, 5, 10, 2023, 2, 3, 16, 30) == 4.20
-    assert calculator(1500, 10, 10, 2023, 2, 3, 16, 30) == 7.20
-    assert calculator(1500, 13, 10, 2023, 2, 3, 16, 30) == 10.44
+    assert calculator(1500, 4, 10, 2023, 2, 3, 16, 30) == 360
+    assert calculator(1500, 5, 10, 2023, 2, 3, 16, 30) == 420
+    assert calculator(1500, 10, 10, 2023, 2, 3, 16, 30) == 720
+    assert calculator(1500, 13, 10, 2023, 2, 3, 16, 30) == 1044
 
 def test_distance1501():
     """
     Test the function with a distance of 1501m
     with increasing item amounts
     """
-    assert calculator(1501, 4, 10, 2023, 2, 3, 14, 00) == 4.00
-    assert calculator(1501, 5, 10, 2023, 2, 3, 14, 00) == 4.50
-    assert calculator(1501, 10, 10, 2023, 2, 3, 14, 00) == 7.00
-    assert calculator(1501, 13, 10, 2023, 2, 3, 14, 00) == 9.70
+    assert calculator(1501, 4, 10, 2023, 2, 3, 14, 00) == 400
+    assert calculator(1501, 5, 10, 2023, 2, 3, 14, 00) == 450
+    assert calculator(1501, 10, 10, 2023, 2, 3, 14, 00) == 700
+    assert calculator(1501, 13, 10, 2023, 2, 3, 14, 00) == 970
 
 
     #With Friday rush modifier
 
-    assert calculator(1501, 4, 10, 2023, 2, 3, 16, 30) == 4.8
-    assert calculator(1501, 5, 10, 2023, 2, 3, 16, 30) == 5.4
-    assert calculator(1501, 10, 10, 2023, 2, 3, 16, 30) == 8.4
-    assert calculator(1501, 13, 10, 2023, 2, 3, 16, 30) == 11.64
+    assert calculator(1501, 4, 10, 2023, 2, 3, 16, 30) == 480
+    assert calculator(1501, 5, 10, 2023, 2, 3, 16, 30) == 540
+    assert calculator(1501, 10, 10, 2023, 2, 3, 16, 30) == 840
+    assert calculator(1501, 13, 10, 2023, 2, 3, 16, 30) == 1164
 
 def test_longDistance():
     """
     Test the function with a distance of 10km
     with increasing item amounts.
     """
-    assert calculator(10000, 4, 10, 2023, 2, 3, 14, 00) == 15.00
-    assert calculator(10000, 5, 10, 2023, 2, 3, 14, 00) == 15.00
-    assert calculator(10000, 10, 10, 2023, 2, 3, 14, 00) == 15.00
-    assert calculator(10000, 13, 10, 2023, 2, 3, 14, 00) == 15.00
+    assert calculator(10000, 4, 10, 2023, 2, 3, 14, 00) == 1500
+    assert calculator(10000, 5, 10, 2023, 2, 3, 14, 00) == 1500
+    assert calculator(10000, 10, 10, 2023, 2, 3, 14, 00) == 1500
+    assert calculator(10000, 13, 10, 2023, 2, 3, 14, 00) == 1500
 
     #With Friday rush modifier
 
-    assert calculator(10000, 4, 10, 2023, 2, 3, 16, 30) == 15.00
-    assert calculator(10000, 5, 10, 2023, 2, 3, 16, 30) == 15.00
-    assert calculator(10000, 10, 10, 2023, 2, 3, 16, 30) == 15.00
-    assert calculator(10000, 13, 10, 2023, 2, 3, 16, 30) == 15.00
+    assert calculator(10000, 4, 10, 2023, 2, 3, 16, 30) == 1500
+    assert calculator(10000, 5, 10, 2023, 2, 3, 16, 30) == 1500
+    assert calculator(10000, 10, 10, 2023, 2, 3, 16, 30) == 1500
+    assert calculator(10000, 13, 10, 2023, 2, 3, 16, 30) == 1500
 
 def test_lowValue():
     """
     We test the function for a low cart value 
     with increasing distances
     """
-    assert calculator(499, 4, 5.35, 2023, 2, 3, 14, 00) == 5.65
-    assert calculator(1000, 4, 5.35, 2023, 2, 3, 14, 00) == 6.65
-    assert calculator(1500, 4, 5.35, 2023, 2, 3, 14, 00) == 7.65
-    assert calculator(1501, 4, 5.35, 2023, 2, 3, 14, 00) == 8.65
-    assert calculator(10000, 4, 5.35, 2023, 2, 3, 14, 00) == 15.00
+    assert calculator(499, 4, 5.35, 2023, 2, 3, 14, 00) == 565
+    assert calculator(1000, 4, 5.35, 2023, 2, 3, 14, 00) == 665
+    assert calculator(1500, 4, 5.35, 2023, 2, 3, 14, 00) == 765
+    assert calculator(1501, 4, 5.35, 2023, 2, 3, 14, 00) == 865
+    assert calculator(10000, 4, 5.35, 2023, 2, 3, 14, 00) == 1500
     
     #With Friday rush multiplier
 
-    assert calculator(499, 4, 5.35, 2023, 2, 3, 16, 30) == 6.78
-    assert calculator(1000, 4, 5.35, 2023, 2, 3, 16, 30) == 7.98
-    assert calculator(1500, 4, 5.35, 2023, 2, 3, 16, 30) == 9.18
-    assert calculator(1501, 4, 5.35, 2023, 2, 3, 16, 30) == 10.38
-    assert calculator(10000, 4, 5.35, 2023, 2, 3, 16, 30) == 15.00
+    assert calculator(499, 4, 5.35, 2023, 2, 3, 16, 30) == 678
+    assert calculator(1000, 4, 5.35, 2023, 2, 3, 16, 30) == 798
+    assert calculator(1500, 4, 5.35, 2023, 2, 3, 16, 30) == 918
+    assert calculator(1501, 4, 5.35, 2023, 2, 3, 16, 30) == 1038
+    assert calculator(10000, 4, 5.35, 2023, 2, 3, 16, 30) == 1500
 
 def test_highValue():
     """
     Test the code with a high cart value
     """
-    assert calculator(1000, 12, 100, 2023, 1, 27, 14, 00) == 0
+    assert calculator(1000, 12, 100, 2023, 2, 3, 14, 00) == 0
+
+def test_negativeDistance():
+    """
+    Test the code with a negative distance
+    """
+    assert calculator(-1, 4, 10, 2023, 2, 3, 14, 00) == "Error: Please enter a valid distance"
