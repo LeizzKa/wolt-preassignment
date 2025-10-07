@@ -27,10 +27,6 @@ def calculator(delivery_distance, item_amount, cart_value, year, month, day, hou
         while item_amount > 4:
             surcharge += 0.5
             item_amount -=1  
-        else:
-            pass
-    else:    
-        pass
 
     #Check delivery distance and calculate the delivery fee
     if delivery_distance < 1000:
@@ -62,13 +58,9 @@ def calculator(delivery_distance, item_amount, cart_value, year, month, day, hou
 
     if is_friday and (is_after15 or is_before19):
         total_fees = total_fees*1.2
-    else:
-        pass
 
     if total_fees > 15:
         total_fees = 15
-    else:
-        pass
 
     #Convert to cents and round to the nearest 1 cent
     total_fees_in_cents = total_fees * 100
